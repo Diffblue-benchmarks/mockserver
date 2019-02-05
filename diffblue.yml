@@ -1,0 +1,472 @@
+# Tested on Deeptest release 1.10.0
+cbmcArguments:
+  cover-function-only: false
+  depth: false
+  do-not-test-methods-with-access: [ private ]
+  java-generate-no-comments: true
+  no-trivial-tests: true
+phases:
+-
+  timeout: 300
+  cbmcArguments:
+    java-assume-inputs-non-null: true
+    max-nondet-array-length: 10
+    string-non-empty: true
+    unwind: 1
+-
+  timeout: 300
+  cbmcArguments:
+    max-nondet-array-length: 20
+    unwind: 2
+-
+  timeout: 300
+  cbmcArguments:
+    max-nondet-array-length: 30
+    max-nondet-string-length: 10
+    unwind: 3
+units:
+  - target:
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/deserializers/body/BodyWithContentTypeDTODeserializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/deserializers/body/BodyWithContentTypeDTODeserializer.java
+    # Child of BodyWithContentTypeDTODeserializer.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/logging/MockServerLogger.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/logging/MockServerLogger.java
+    # Child of BodyWithContentTypeDTODeserializer.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/matchers/MatchType.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/matchers/MatchType.java
+    # Child of BodyWithContentTypeDTODeserializer.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/Base64Converter.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/Base64Converter.java
+    # Child of BodyWithContentTypeDTODeserializer.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/ObjectMapperFactory.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/ObjectMapperFactory.java
+  - target:
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/client/netty/websocket/WebSocketClient.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/client/netty/websocket/WebSocketClient.java
+    # Child of WebSocketClient.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/mock/action/ExpectationCallback.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/mock/action/ExpectationCallback.java
+    # Child of WebSocketClient.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/model/HttpObject.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/model/HttpObject.java
+    # Child of WebSocketClient.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/model/HttpRequest.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/model/HttpRequest.java
+    # Child of WebSocketClient.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/WebSocketMessageSerializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/WebSocketMessageSerializer.java
+    # Child of WebSocketClient.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/model/WebSocketClientIdDTO.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/model/WebSocketClientIdDTO.java
+    # Child of WebSocketClient.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/model/WebSocketErrorDTO.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/model/WebSocketErrorDTO.java
+  - target:
+    - dir: mockserver-netty/target/classes
+      file: org/mockserver/proxy/relay/RelayConnectHandler.class
+      sourceDir: mockserver-netty/src/main/java
+      sourceFile: org/mockserver/proxy/relay/RelayConnectHandler.java
+    # Child of RelayConnectHandler.class
+    - dir: mockserver-netty/target/classes
+      file: org/mockserver/lifecycle/LifeCycle.class
+      sourceDir: mockserver-netty/src/main/java
+      sourceFile: org/mockserver/lifecycle/LifeCycle.java
+    # Child of RelayConnectHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/logging/LoggingHandler.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/logging/LoggingHandler.java
+  - target:
+    - dir: mockserver-examples/target/classes
+      file: org/mockserver/examples/proxy/servicebackend/BookServer.class
+      sourceDir: mockserver-examples/src/main/java
+      sourceFile: org/mockserver/examples/proxy/servicebackend/BookServer.java
+    # Child of BookServer.class
+    - dir: mockserver-examples/target/classes
+      file: org/mockserver/examples/proxy/json/ObjectMapperFactory.class
+      sourceDir: mockserver-examples/src/main/java
+      sourceFile: org/mockserver/examples/proxy/json/ObjectMapperFactory.java
+    # Child of BookServer.class
+    - dir: mockserver-examples/target/classes
+      file: org/mockserver/examples/proxy/model/Book.class
+      sourceDir: mockserver-examples/src/main/java
+      sourceFile: org/mockserver/examples/proxy/model/Book.java
+  - target:
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/deserializers/body/BodyDTODeserializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/deserializers/body/BodyDTODeserializer.java
+  - target:
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/mock/action/ActionHandler.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/mock/action/ActionHandler.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/client/netty/NettyHttpClient.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/client/netty/NettyHttpClient.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/client/netty/SocketCommunicationException.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/client/netty/SocketCommunicationException.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/client/netty/SocketConnectionException.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/client/netty/SocketConnectionException.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/client/netty/proxy/ProxyConfiguration.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/client/netty/proxy/ProxyConfiguration.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/configuration/ConfigurationProperties.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/configuration/ConfigurationProperties.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/filters/HopByHopHeaderFilter.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/filters/HopByHopHeaderFilter.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/log/model/ExpectationMatchLogEntry.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/log/model/ExpectationMatchLogEntry.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/log/model/RequestLogEntry.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/log/model/RequestLogEntry.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/log/model/RequestResponseLogEntry.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/log/model/RequestResponseLogEntry.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/mock/Expectation.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/mock/Expectation.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/mock/HttpStateHandler.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/mock/HttpStateHandler.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/responsewriter/ResponseWriter.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/responsewriter/ResponseWriter.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/scheduler/Scheduler.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/scheduler/Scheduler.java
+    # Child of ActionHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/curl/HttpRequestToCurlSerializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/curl/HttpRequestToCurlSerializer.java
+  - target:
+    - dir: mockserver-examples/target/classes
+      file: org/mockserver/examples/mockserver/RequestMatcherExamples.class
+      sourceDir: mockserver-examples/src/main/java
+      sourceFile: org/mockserver/examples/mockserver/RequestMatcherExamples.java
+    # Child of RequestMatcherExamples.class
+    - dir: mockserver-client-java/target/classes
+      file: org/mockserver/client/MockServerClient.class
+      sourceDir: mockserver-client-java/src/main/java
+      sourceFile: org/mockserver/client/MockServerClient.java
+    # Child of RequestMatcherExamples.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/matchers/TimeToLive.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/matchers/TimeToLive.java
+    # Child of RequestMatcherExamples.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/matchers/Times.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/matchers/Times.java
+    # Child of RequestMatcherExamples.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/model/HttpStatusCode.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/model/HttpStatusCode.java
+    # Child of RequestMatcherExamples.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/model/Not.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/model/Not.java
+  - target:
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/mock/HttpStateHandler.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/mock/HttpStateHandler.java
+    # Child of HttpStateHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/callback/WebSocketClientRegistry.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/callback/WebSocketClientRegistry.java
+    # Child of HttpStateHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/filters/MockServerEventLog.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/filters/MockServerEventLog.java
+    # Child of HttpStateHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/log/model/LogEntry.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/log/model/LogEntry.java
+    # Child of HttpStateHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/log/model/MessageLogEntry.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/log/model/MessageLogEntry.java
+    # Child of HttpStateHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/java/ExpectationToJavaSerializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/java/ExpectationToJavaSerializer.java
+    # Child of HttpStateHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/java/HttpRequestToJavaSerializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/java/HttpRequestToJavaSerializer.java
+    # Child of HttpStateHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/server/initialize/ExpectationInitializerLoader.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/server/initialize/ExpectationInitializerLoader.java
+    # Child of HttpStateHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/verify/Verification.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/verify/Verification.java
+    # Child of HttpStateHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/verify/VerificationSequence.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/verify/VerificationSequence.java
+  - target:
+    - dir: mockserver-integration-testing/target/classes
+      file: org/mockserver/integration/server/AbstractExtendedSameJVMMockingIntegrationTest.class
+      sourceDir: mockserver-integration-testing/src/main/java
+      sourceFile: org/mockserver/integration/server/AbstractExtendedSameJVMMockingIntegrationTest.java
+    # Child of AbstractExtendedSameJVMMockingIntegrationTest.class
+    - dir: mockserver-integration-testing/target/classes
+      file: org/mockserver/integration/callback/StaticTestExpectationResponseCallback.class
+      sourceDir: mockserver-integration-testing/src/main/java
+      sourceFile: org/mockserver/integration/callback/StaticTestExpectationResponseCallback.java
+    # Child of AbstractExtendedSameJVMMockingIntegrationTest.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/metrics/Metrics.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/metrics/Metrics.java
+    # Child of AbstractExtendedSameJVMMockingIntegrationTest.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/mock/action/ExpectationResponseCallback.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/mock/action/ExpectationResponseCallback.java
+    # Child of AbstractExtendedSameJVMMockingIntegrationTest.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/model/HttpResponse.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/model/HttpResponse.java
+    # Child of AbstractExtendedSameJVMMockingIntegrationTest.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/model/HttpTemplate.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/model/HttpTemplate.java
+  - target:
+    - dir: mockserver-netty/target/classes
+      file: org/mockserver/mockserver/MockServerHandler.class
+      sourceDir: mockserver-netty/src/main/java
+      sourceFile: org/mockserver/mockserver/MockServerHandler.java
+    # Child of MockServerHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/PortBindingSerializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/PortBindingSerializer.java
+    # Child of MockServerHandler.class
+    - dir: mockserver-netty/target/classes
+      file: org/mockserver/dashboard/DashboardHandler.class
+      sourceDir: mockserver-netty/src/main/java
+      sourceFile: org/mockserver/dashboard/DashboardHandler.java
+    # Child of MockServerHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/mock/action/ActionHandler.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/mock/action/ActionHandler.java
+    # Child of MockServerHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/model/PortBinding.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/model/PortBinding.java
+    # Child of MockServerHandler.class
+    - dir: mockserver-netty/target/classes
+      file: org/mockserver/proxy/connect/HttpConnectHandler.class
+      sourceDir: mockserver-netty/src/main/java
+      sourceFile: org/mockserver/proxy/connect/HttpConnectHandler.java
+    # Child of MockServerHandler.class
+    - dir: mockserver-netty/target/classes
+      file: org/mockserver/responsewriter/NettyResponseWriter.class
+      sourceDir: mockserver-netty/src/main/java
+      sourceFile: org/mockserver/responsewriter/NettyResponseWriter.java
+    # Child of MockServerHandler.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/socket/tls/KeyAndCertificateFactory.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/socket/tls/KeyAndCertificateFactory.java
+  - target:
+    - dir: mockserver-netty/target/classes
+      file: org/mockserver/lifecycle/LifeCycle.class
+      sourceDir: mockserver-netty/src/main/java
+      sourceFile: org/mockserver/lifecycle/LifeCycle.java
+    # Child of LifeCycle.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/stop/Stoppable.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/stop/Stoppable.java
+  - target:
+    - dir: mockserver-integration-testing/target/classes
+      file: org/mockserver/integration/proxy/AbstractClientSecureProxyIntegrationTest.class
+      sourceDir: mockserver-integration-testing/src/main/java
+      sourceFile: org/mockserver/integration/proxy/AbstractClientSecureProxyIntegrationTest.java
+    # Child of AbstractClientSecureProxyIntegrationTest.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/socket/tls/KeyStoreFactory.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/socket/tls/KeyStoreFactory.java
+    # Child of AbstractClientSecureProxyIntegrationTest.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/streams/IOStreamUtils.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/streams/IOStreamUtils.java
+  - target:
+    - dir: mockserver-examples/target/classes
+      file: org/mockserver/examples/mockserver/CallbackActionExamples.class
+      sourceDir: mockserver-examples/src/main/java
+      sourceFile: org/mockserver/examples/mockserver/CallbackActionExamples.java
+    # Child of CallbackActionExamples.class
+    - dir: mockserver-netty/target/classes
+      file: org/mockserver/integration/ClientAndServer.class
+      sourceDir: mockserver-netty/src/main/java
+      sourceFile: org/mockserver/integration/ClientAndServer.java
+    # Child of CallbackActionExamples.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/mock/action/ExpectationForwardCallback.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/mock/action/ExpectationForwardCallback.java
+  - target:
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/validator/jsonschema/JsonSchemaValidator.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/validator/jsonschema/JsonSchemaValidator.java
+    # Child of JsonSchemaValidator.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/file/FileReader.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/file/FileReader.java
+    # Child of JsonSchemaValidator.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/model/ObjectWithReflectiveEqualsHashCodeToString.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/model/ObjectWithReflectiveEqualsHashCodeToString.java
+    # Child of JsonSchemaValidator.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/validator/Validator.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/validator/Validator.java
+  - target:
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/matchers/HttpRequestMatcher.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/matchers/HttpRequestMatcher.java
+  - target:
+    - dir: mockserver-examples/target/classes
+      file: org/mockserver/examples/mockserver/ResponseActionExamples.class
+      sourceDir: mockserver-examples/src/main/java
+      sourceFile: org/mockserver/examples/mockserver/ResponseActionExamples.java
+  - target:
+    - dir: mockserver-netty/target/classes
+      file: org/mockserver/cli/Main.class
+      sourceDir: mockserver-netty/src/main/java
+      sourceFile: org/mockserver/cli/Main.java
+    # Child of Main.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/configuration/IntegerStringListParser.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/configuration/IntegerStringListParser.java
+    # Child of Main.class
+    - dir: mockserver-netty/target/classes
+      file: org/mockserver/mockserver/MockServer.class
+      sourceDir: mockserver-netty/src/main/java
+      sourceFile: org/mockserver/mockserver/MockServer.java
+  - target:
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/matchers/RegexStringMatcher.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/matchers/RegexStringMatcher.java
+    # Child of RegexStringMatcher.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/model/NottableString.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/model/NottableString.java
+  - target:
+    - dir: mockserver-integration-testing/target/classes
+      file: org/mockserver/integration/server/AbstractExtendedMockingIntegrationTest.class
+      sourceDir: mockserver-integration-testing/src/main/java
+      sourceFile: org/mockserver/integration/server/AbstractExtendedMockingIntegrationTest.java
+    # Child of AbstractExtendedMockingIntegrationTest.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/ExpectationSerializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/ExpectationSerializer.java
+    # Child of AbstractExtendedMockingIntegrationTest.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/HttpRequestSerializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/HttpRequestSerializer.java
+    # Child of AbstractExtendedMockingIntegrationTest.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/JsonArraySerializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/JsonArraySerializer.java
+    # Child of AbstractExtendedMockingIntegrationTest.class
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/verify/VerificationTimes.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/verify/VerificationTimes.java
+  - target:
+    - dir: mockserver-core/target/classes
+      file: org/mockserver/serialization/java/HttpRequestToJavaSerializer.class
+      sourceDir: mockserver-core/src/main/java
+      sourceFile: org/mockserver/serialization/java/HttpRequestToJavaSerializer.java
